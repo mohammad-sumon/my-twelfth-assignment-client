@@ -45,7 +45,7 @@ const Navbar = () => {
             {menuitems}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost font-bold text-3xl text-sky-500">
           AC House
         </Link>
       </div>

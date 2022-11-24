@@ -3,12 +3,22 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
+
   return (
     <div>
       <div className="h-[800px] flex justify-center items-center">
         <div className="bg-base-200 rounded-md w-96 p-8">
           <h2 className="text-xl text-center">Login</h2>
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Email</span>

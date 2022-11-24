@@ -2,12 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SingUp = () => {
+  const handleSignUp = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value;
+    // const role = form.buyer.innerText;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
+  };
   return (
     <div>
       <div className="h-[800px] flex justify-center items-center">
         <div className="bg-base-200 rounded-md w-96 p-8">
           <h2 className="text-xl text-center">Sign Up</h2>
-          <form>
+          <form onSubmit={handleSignUp}>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -22,6 +32,20 @@ const SingUp = () => {
               {/* {errors.email && (
               <p className="text-red-600">{errors.email?.message}</p>
             )} */}
+            </div>
+
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Select who are you?</span>
+              </label>
+
+              <select className="select select-bordered w-full max-w-xs">
+                <option name="buyer" selected>
+                  Buyer
+                </option>
+                <option name="admin">Admin</option>
+                <option name="seller">Seller</option>
+              </select>
             </div>
 
             <div className="form-control w-full">

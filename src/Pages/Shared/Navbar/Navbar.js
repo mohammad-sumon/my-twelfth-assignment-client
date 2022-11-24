@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
 
   const handleLogOut = () => {
     logOut()
@@ -22,7 +24,7 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
-      {user?.uid ? (
+      {user?.uid && isAdmin ? (
         <>
           <li>
             <Link to="/dashboard">Dashboard</Link>
@@ -43,6 +45,7 @@ const Navbar = () => {
       )}
     </>
   );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">

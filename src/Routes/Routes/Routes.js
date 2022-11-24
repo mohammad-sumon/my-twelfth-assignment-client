@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import AdminDashboard from "../../Pages/Dashboard/AdminDashboard/AdminDashboard";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Category from "../../Pages/Home/Category/Category";
 import Home from "../../Pages/Home/Home/Home";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         element: <Category></Category>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/category/${params.id}`),
+      },
+      {
+        path: "/dashboard",
+        element: <AdminDashboard></AdminDashboard>,
       },
     ],
   },

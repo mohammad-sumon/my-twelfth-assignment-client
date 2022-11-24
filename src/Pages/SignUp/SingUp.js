@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const SingUp = () => {
@@ -25,12 +26,31 @@ const SingUp = () => {
       password,
     };
     console.log(signUpUser);
+
     createUser(signUpUser.email, signUpUser.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        form.reset();
+        toast.success("User Created Successfully.");
+        saveUser(name, email);
       })
       .catch((error) => setSignUpError(error));
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("save user", data);
+      });
   };
 
   const googleLogin = () => {

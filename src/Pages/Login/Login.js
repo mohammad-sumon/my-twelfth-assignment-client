@@ -1,10 +1,13 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSingIn } = useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -19,6 +22,15 @@ const Login = () => {
         console.log(user);
       })
       .catch((error) => setLoginError(error));
+  };
+
+  const googleLogin = () => {
+    googleSingIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -75,7 +87,10 @@ const Login = () => {
             </Link>
           </p>
           <div className="divider">OR</div>
-          <button className="btn btn-outline hover:bg-sky-400 border hover:border-none w-full">
+          <button
+            onClick={googleLogin}
+            className="btn btn-outline hover:bg-sky-400 border hover:border-none w-full"
+          >
             CONTINUE WITH GOOGLE
           </button>
         </div>

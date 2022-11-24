@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Spinner from "../../Shared/Spinner/Spinner";
 
 const Category = () => {
   const data = useLoaderData();
-  console.log(data.categories);
+  console.log(data[0].categories);
 
   return (
     <div>

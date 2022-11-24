@@ -1,10 +1,13 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const SingUp = () => {
   const [signUpError, setSignUpError] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleSingIn } = useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -28,6 +31,15 @@ const SingUp = () => {
         console.log(user);
       })
       .catch((error) => setSignUpError(error));
+  };
+
+  const googleLogin = () => {
+    googleSingIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -120,7 +132,10 @@ const SingUp = () => {
             </Link>
           </p>
           <div className="divider">OR</div>
-          <button className="btn btn-outline hover:bg-sky-400 border hover:border-none w-full">
+          <button
+            onClick={googleLogin}
+            className="btn btn-outline hover:bg-sky-400 border hover:border-none w-full"
+          >
             CONTINUE WITH GOOGLE
           </button>
         </div>

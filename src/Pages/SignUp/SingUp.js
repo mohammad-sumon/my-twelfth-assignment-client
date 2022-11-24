@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SingUp = () => {
+  const [signUpError, setSignUpError] = useState("");
+  const { createUser } = useContext(AuthContext);
+
   const handleSignUp = (event) => {
     event.preventDefault();
 
     const form = event.target;
     const name = form.name.value;
-    // const role = form.buyer.innerText;
+    const role = form.role.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+
+    const signUpUser = {
+      name,
+      role,
+      email,
+      password,
+    };
+    console.log(signUpUser);
+    createUser(signUpUser.email, signUpUser.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => setSignUpError(error));
   };
+
   return (
     <div>
       <div className="h-[800px] flex justify-center items-center">
@@ -29,23 +47,35 @@ const SingUp = () => {
                 className="input input-bordered w-full max-w-xs"
                 required
               />
-              {/* {errors.email && (
-              <p className="text-red-600">{errors.email?.message}</p>
-            )} */}
             </div>
 
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Select who are you?</span>
+                <span className="label-text">Select Who You are?</span>
               </label>
-
-              <select className="select select-bordered w-full max-w-xs">
-                <option name="buyer" selected>
+              <span className="label-text">
+                <input
+                  className="mr-5"
+                  type="radio"
+                  id="buyer"
+                  value="Buyer"
+                  name="role"
+                  defaultChecked
+                />
+                <label defaultValue="buyer" htmlFor="buyer">
                   Buyer
-                </option>
-                <option name="admin">Admin</option>
-                <option name="seller">Seller</option>
-              </select>
+                </label>
+              </span>
+              <span className="label-text">
+                <input
+                  className="mr-5"
+                  type="radio"
+                  id="seller"
+                  value="Seller"
+                  name="role"
+                />
+                <label htmlFor="seller">Seller</label>
+              </span>
             </div>
 
             <div className="form-control w-full">
@@ -59,9 +89,6 @@ const SingUp = () => {
                 className="input input-bordered w-full max-w-xs"
                 required
               />
-              {/* {errors.email && (
-              <p className="text-red-600">{errors.email?.message}</p>
-            )} */}
             </div>
             <div className="form-control w-full">
               <label className="label">
@@ -74,9 +101,6 @@ const SingUp = () => {
                 className="input input-bordered w-full max-w-xs"
                 required
               />
-              {/* {errors.password && (
-              <p className="text-red-600">{errors.password?.message}</p>
-            )} */}
             </div>
             <input
               className="btn border-none bg-sky-400 hover:bg-sky-500 w-full my-5"
@@ -84,7 +108,9 @@ const SingUp = () => {
               type="submit"
             />
             <div>
-              {/* {loginError && <p className="text-red-600">{loginError}</p>} */}
+              {signUpError && (
+                <p className="text-red-600">{signUpError.message}</p>
+              )}
             </div>
           </form>
           <p>

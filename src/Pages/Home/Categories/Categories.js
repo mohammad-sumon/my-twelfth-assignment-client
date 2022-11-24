@@ -5,7 +5,11 @@ const Categories = () => {
   const [Categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/resaleProductCategories")
+    fetch("http://localhost:5000/resaleProductCategories", {
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

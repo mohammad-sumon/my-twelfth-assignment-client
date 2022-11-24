@@ -3,11 +3,20 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
   const { signIn, googleSingIn } = useContext(AuthContext);
+
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
+
   const navigate = useNavigate();
+
+  if (token) {
+    navigate("/");
+  }
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -24,7 +33,8 @@ const Login = () => {
         console.log(user);
         form.reset();
         toast.success("Login Successfully.");
-        navigate("/");
+        setLoginUserEmail(email);
+        // navigate("/");
       })
       .catch((error) => setLoginError(error));
   };

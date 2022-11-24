@@ -1,12 +1,22 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const SingUp = () => {
   const [signUpError, setSignUpError] = useState("");
   const { createUser, googleSingIn } = useContext(AuthContext);
+
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
+
+  const navigate = useNavigate();
+
+  if (token) {
+    navigate("/");
+  }
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -49,7 +59,8 @@ const SingUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("save user", data);
+        // console.log("save user", data);
+        setCreatedUserEmail(email);
       });
   };
 

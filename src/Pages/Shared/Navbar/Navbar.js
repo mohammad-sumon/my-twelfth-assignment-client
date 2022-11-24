@@ -23,14 +23,19 @@ const Navbar = () => {
         <Link to="/blogs">Blogs</Link>
       </li>
       {user?.uid ? (
-        <li>
-          <button
-            onClick={handleLogOut}
-            className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
-          >
-            Sign Out
-          </button>
-        </li>
+        <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
+            >
+              Sign Out
+            </button>
+          </li>
+        </>
       ) : (
         <li>
           <Link to="/login">Login</Link>

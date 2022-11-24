@@ -23,7 +23,7 @@ const Footer = () => {
           <Link className="link link-hover">Privacy policy</Link>
         </div>
       </footer>
-      <div className="pb-3 text-center">
+      <div className="pb-6 text-center">
         <p className="text-xl font-bold">
           Copyright © 2022 - All right reserved by Mohammad Sumon
         </p>

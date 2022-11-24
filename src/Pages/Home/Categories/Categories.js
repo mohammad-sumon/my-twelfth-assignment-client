@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   const [Categories, setCategories] = useState([]);
@@ -27,7 +28,12 @@ const Categories = () => {
             </figure>
             <div className="card-body">
               <div className="w-full justify-center text-white">
-                <button className="btn btn-info">{category.categories}</button>
+                <Link
+                  to={`category/${category.categories}`}
+                  className="btn btn-info"
+                >
+                  {category.categories}
+                </Link>
               </div>
             </div>
           </div>

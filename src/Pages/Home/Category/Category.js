@@ -89,6 +89,7 @@ const Category = () => {
                 >
                   Book Now
                 </label>
+                <button className="btn btn-danger">Report to Admin</button>
 
                 {/* book now modal body */}
                 <form onSubmit={handleModalSubmit}>

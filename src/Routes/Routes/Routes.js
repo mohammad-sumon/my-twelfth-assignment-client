@@ -52,15 +52,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/sellerDashboard",
-        element: <SellerDashboard></SellerDashboard>,
+        element: (
+          <PrivateRoute>
+            <SellerDashboard></SellerDashboard>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/buyerDashboard",
-        element: <BuyerDashboard></BuyerDashboard>,
+        element: (
+          <PrivateRoute>
+            <BuyerDashboard></BuyerDashboard>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/payment",
-        element: <Payment></Payment>,
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/sellerDashboard/addProduct",

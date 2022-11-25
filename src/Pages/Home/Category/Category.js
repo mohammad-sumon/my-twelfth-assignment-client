@@ -11,10 +11,6 @@ const Category = () => {
   const data = useLoaderData();
   console.log(data[0].categories);
 
-  const handleModalBtn = (id) => {
-    console.log("clicked", id);
-  };
-
   const handleModalSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -82,6 +78,9 @@ const Category = () => {
               <p>Original Price: BDT: {dt?.originalPrice}</p>
               <p>Years of Use: {dt?.UsesYear}</p>
               <p>Seller Name: {dt?.sellerName}</p>
+              <p>Phone Number: {dt?.mobile}</p>
+              <p>Condition: {dt?.conditiontype}</p>
+              <p>Description: {dt?.description}</p>
               <div className="card-actions justify-center ">
                 <label
                   htmlFor="booking-modal"

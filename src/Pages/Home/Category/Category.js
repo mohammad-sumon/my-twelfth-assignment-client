@@ -23,6 +23,7 @@ const Category = () => {
     const useremail = form.useremail.value;
     const itemname = form.itemname.value;
     const resaleprice = form.resaleprice.value;
+    const photo = form.photo.value;
     const phone = form.phone.value;
     const location = form.location.value;
 
@@ -31,6 +32,7 @@ const Category = () => {
       useremail,
       itemname,
       resaleprice,
+      photo,
       phone,
       location,
     };
@@ -142,6 +144,15 @@ const Category = () => {
                         placeholder="Type here"
                         className="input input-bordered w-full mb-4"
                         defaultValue={dt?.resalePrice}
+                        disabled
+                      />
+                      <label htmlFor="name">Photo URL</label>
+                      <input
+                        name="photo"
+                        type="text"
+                        placeholder="Type here"
+                        className="input input-bordered w-full mb-4"
+                        defaultValue={dt?.photo}
                         disabled
                       />
                       <label htmlFor="name">Phone</label>

@@ -1,16 +1,23 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import useAdmin from "../../../hooks/useAdmin";
+import useBuyer from "../../../hooks/useBuyer";
+import useSeller from "../../../hooks/useSeller";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
+
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
+    navigate("/");
   };
 
   const menuitems = (
@@ -42,6 +49,40 @@ const Navbar = () => {
         <li>
           <Link to="/login">Login</Link>
         </li>
+      )}
+
+      {/* seller dashboard */}
+      {user?.uid && isSeller && (
+        <>
+          <li>
+            <Link to="/dashboard/sellerDashboard">Dashboard</Link>
+          </li>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
+            >
+              Sign Out
+            </button>
+          </li>
+        </>
+      )}
+
+      {/* buyer dashboard */}
+      {user?.uid && (
+        <>
+          <li>
+            <Link to="/dashboard/buyerDashboard">Dashboard</Link>
+          </li>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
+            >
+              Sign Out
+            </button>
+          </li>
+        </>
       )}
     </>
   );

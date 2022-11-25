@@ -43,13 +43,13 @@ const SingUp = () => {
         console.log(user);
         form.reset();
         toast.success("User Created Successfully.");
-        saveUser(name, email);
+        saveUser(name, email, role);
       })
       .catch((error) => setSignUpError(error));
   };
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -60,7 +60,7 @@ const SingUp = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log("save user", data);
-        setCreatedUserEmail(email);
+        setCreatedUserEmail(email, role);
       });
   };
 

@@ -7,7 +7,7 @@ import useToken from "../../hooks/useToken";
 
 const SingUp = () => {
   const [signUpError, setSignUpError] = useState("");
-  const { createUser, googleSingIn } = useContext(AuthContext);
+  const { createUser, googleSingIn, updateUser } = useContext(AuthContext);
 
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const [token] = useToken(createdUserEmail);
@@ -43,7 +43,15 @@ const SingUp = () => {
         console.log(user);
         form.reset();
         toast.success("User Created Successfully.");
-        saveUser(name, email, role);
+
+        const userInfo = {
+          displayName: name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            saveUser(name, email, role);
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => setSignUpError(error));
   };

@@ -31,24 +31,22 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
-      {user?.uid && isAdmin ? (
+
+      {user?.uid && isAdmin && (
         <>
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
+        </>
+      )}
+
+      {/* buyer dashboard */}
+      {user?.uid && isBuyer && (
+        <>
           <li>
-            <button
-              onClick={handleLogOut}
-              className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
-            >
-              Sign Out
-            </button>
+            <Link to="/dashboard/buyerDashboard">Dashboard</Link>
           </li>
         </>
-      ) : (
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
       )}
 
       {/* seller dashboard */}
@@ -57,32 +55,23 @@ const Navbar = () => {
           <li>
             <Link to="/dashboard/sellerDashboard">Dashboard</Link>
           </li>
-          <li>
-            <button
-              onClick={handleLogOut}
-              className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
-            >
-              Sign Out
-            </button>
-          </li>
         </>
       )}
 
-      {/* buyer dashboard */}
-      {user?.uid && (
-        <>
-          <li>
-            <Link to="/dashboard/buyerDashboard">Dashboard</Link>
-          </li>
-          <li>
-            <button
-              onClick={handleLogOut}
-              className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
-            >
-              Sign Out
-            </button>
-          </li>
-        </>
+      {/* login and login btn display conditionally */}
+      {!user?.uid ? (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      ) : (
+        <li>
+          <button
+            onClick={handleLogOut}
+            className="btn rounded-md bg-sky-400 border-none hover:bg-sky-500 hover:text-white"
+          >
+            Sign Out
+          </button>
+        </li>
       )}
     </>
   );

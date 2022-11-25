@@ -1,12 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import useBuyer from "../../../hooks/useBuyer";
 
 const AdminDashboard = () => {
+  const { user } = useContext(AuthContext);
+  const [isBuyer] = useBuyer(user?.email);
+
   const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users", isBuyer],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(`http://localhost:5000/users`);
       const data = await res.json();
       console.log(data);
       return data;

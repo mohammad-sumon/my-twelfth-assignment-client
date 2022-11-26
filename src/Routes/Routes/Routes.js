@@ -12,6 +12,7 @@ import Category from "../../Pages/Home/Category/Category";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SingUp from "../../Pages/SignUp/SingUp";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <AdminDashboard></AdminDashboard>,
+        element: (
+          <AdminRoute>
+            <AdminDashboard></AdminDashboard>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/sellerDashboard",
@@ -76,7 +81,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/sellerDashboard/addProduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/sellerDashboard/myProducts",

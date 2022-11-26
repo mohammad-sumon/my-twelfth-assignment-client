@@ -22,16 +22,21 @@
     <li>JWT Token</li>
     <li>React Toast</li>
     <li>React Icons</li>
+    <li>Generic Modal</li>
 </ul>
 
 ## Admin Credentials
 
 # 01.
+
 # Admin Email: abc@def.com
+
 # Admin Password: 123456
 
 # 02.
+
 # Admin Email: sumon3011@gmail.com
+
 # Admin Password: 123456
 
 # Getting Started with Create React App

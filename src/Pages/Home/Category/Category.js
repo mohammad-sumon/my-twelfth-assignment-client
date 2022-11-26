@@ -45,17 +45,16 @@ const Category = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          // setTreatment(null);
-          form.reset();
           toast.success("Item is booked now");
+          form.reset();
         } else {
           toast.error(data.message);
         }
       });
+  };
 
-    // toast.success("Item is booked now");
-    // form.reset();
-    // setBooked(null);
+  const reportAdmin = () => {
+    toast.success("Reported to Admin Successfully.");
   };
 
   return (
@@ -89,7 +88,9 @@ const Category = () => {
                 >
                   Book Now
                 </label>
-                <button className="btn btn-danger">Report to Admin</button>
+                <button onClick={reportAdmin} className="btn btn-danger">
+                  Report to Admin
+                </button>
 
                 {/* book now modal body */}
                 <form onSubmit={handleModalSubmit}>

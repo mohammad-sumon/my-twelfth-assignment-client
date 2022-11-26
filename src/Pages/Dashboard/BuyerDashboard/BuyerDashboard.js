@@ -24,8 +24,7 @@ const BuyerDashboard = () => {
   return (
     <div>
       <h2 className="text-2xl">This is buyer dashboard</h2>
-      <h3 className="text-xl">My Orders</h3>
-      <h3 className="text-xl">{bookings.length}</h3>
+      <h3 className="text-xl my-2">My Orders is: {bookings.length}</h3>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

@@ -45,7 +45,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(
+            `https://used-products-resale-server-orpin.vercel.app/category/${params.id}`
+          ),
       },
       {
         path: "/dashboard",

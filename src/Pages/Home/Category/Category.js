@@ -34,7 +34,7 @@ const Category = () => {
     };
     console.log("form clicked", buyerInfo);
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://used-products-resale-server-orpin.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

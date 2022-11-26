@@ -1,3 +1,39 @@
+# Website Name:
+
+### AC HOUSE
+
+# Live Website Link:
+
+### https://used-products-resale-cli-8eb57.web.app/
+
+### https://used-products-resale-cli-8eb57.firebaseapp.com/
+
+## Features & Functionality
+
+<ul>
+    <li>React Router Dom</li>
+    <li>Firebase Authentication</li>
+    <li>Used backend server in Vercel</li>
+    <li>Private Route</li>
+    <li>Google Authtication</li>
+    <li>React Query</li>
+    <li>React Stripe</li>
+    <li>CRUD Operation</li>
+    <li>JWT Token</li>
+    <li>React Toast</li>
+    <li>React Icons</li>
+</ul>
+
+## Admin Credentials
+
+# 01.
+# Admin Email: abc@def.com
+# Admin Password: 123456
+
+# 02.
+# Admin Email: sumon3011@gmail.com
+# Admin Password: 123456
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

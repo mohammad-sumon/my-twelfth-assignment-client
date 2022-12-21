@@ -13,11 +13,11 @@ const Blogs = () => {
             application?
           </h2>
           <p className="text-md">
-            Every React component has a built-in state. This state is an object
-            which stores the property values that belong to a component. State
-            is able to keep data from different components in-sync because each
-            state update re-renders all relevant components. The built-in way
-            that React provides for setting component states is by using
+            Answer: Every React component has a built-in state. This state is an
+            object which stores the property values that belong to a component.
+            State is able to keep data from different components in-sync because
+            each state update re-renders all relevant components. The built-in
+            way that React provides for setting component states is by using
             setState() and adding “local state” to a class. There are several
             other ways to manage state​s in React, including the use of: Hooks
             React Context API Apollo Link State. The built-in setState() method

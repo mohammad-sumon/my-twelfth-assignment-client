@@ -40,9 +40,9 @@ const router = createBrowserRouter([
       {
         path: "/category/:id",
         element: (
-          <PrivateRoute>
-            <Category></Category>
-          </PrivateRoute>
+          // <PrivateRoute>
+          <Category></Category>
+          // </PrivateRoute>
         ),
         loader: ({ params }) =>
           fetch(
